@@ -3,7 +3,7 @@ import React from "react";
 
 export default function layout({ children }) {
   return (
-    <div className="h-screen bg-beige_100">
+    <div className="h-screen relative bg-beige_100">
       <div className="sm:flex">
         <Navbar />
         <div className="sm:ml-[15%] w-full h-full">{children}</div>
