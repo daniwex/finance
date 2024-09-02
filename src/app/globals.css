@@ -31,3 +31,6 @@ html, body{
     text-wrap: balance;
   }
 }
+p{
+  color: rgba(196, 193, 193, 0.212);
+}

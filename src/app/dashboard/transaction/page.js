@@ -18,6 +18,9 @@ export default function page() {
 
   async function submit(e) {
     e.preventDefault();
+    if (transactionDate == "" || transactionAmount == "" || transactionName == "") {
+      return;
+    }
     const data = {
       transactionName,
       transactionCategory,

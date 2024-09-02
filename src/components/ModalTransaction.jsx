@@ -93,7 +93,7 @@ export default function ModalTransaction({
           <input
             type="submit"
             value="Submit"
-            className="w-full mt-7 text-xs text-white bg-grey_500 py-3 rounded-lg"
+            className="w-full mt-7 text-xs text-white bg-grey_500 py-3 rounded-lg cursor-pointer"
           />
         </form>
       </div>
