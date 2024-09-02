@@ -1,0 +1,13 @@
+import Navbar from "@/components/Navbar";
+import React from "react";
+
+export default function layout({ children }) {
+  return (
+    <div className="h-screen bg-beige_100">
+      <div className="sm:flex h-screen">
+        <Navbar />
+        <div className="sm:ml-[15%] w-full h-full">{children}</div>
+      </div>
+    </div>
+  );
+}
