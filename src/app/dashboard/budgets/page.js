@@ -87,7 +87,7 @@ export default function page() {
   }, [loadBugets]);
 
   return (
-    <div className="h-screen overflow-y-scroll p-5">
+    <div className="p-5">
       <div className="flex justify-between">
         <h2 className="text-xl">Budgets</h2>
         <button

@@ -66,7 +66,7 @@ export default function page() {
   }, [refresh]);
 
   return (
-    <div className="h-full p-5">
+    <div className="p-5">
       <div className="flex justify-between">
         <h2 className="text-xl">Transactions</h2>
         <button
