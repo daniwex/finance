@@ -41,7 +41,7 @@ export default function page() {
               <h2 className="text-3xl sm:w-3/5 pb-5">
                 Keep track of your money and save for your future
               </h2>
-              <p className="sm:w-4/5 text-sm">
+              <p className="sm:w-4/5 text-sm text-white">
                 Personal finance app puts you in control of your spending. Track
                 transactions, set budgets, and add to savings pots easily.
               </p>
@@ -90,7 +90,7 @@ export default function page() {
               />
             </form>
             <div>
-              <p className="text-sm">
+              <p className="text-sm text-black">
                 Already have an account have an account?{" "}
                 <Link href="/" className="text-grey_500 underline">
                   Sign in

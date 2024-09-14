@@ -1,8 +1,9 @@
 "use client";
+import BudgetsContainer from "@/components/BudgetsContainer";
 import ModalBudget from "@/components/ModalBudget";
 import Piechart from "@/components/Piechart";
 import Summary from "@/components/Summary";
-import { aggregateTable } from "@/utility/utils";
+import { aggregateTable, budgetInfo } from "@/utility/utils";
 import { useState, useEffect, useRef } from "react";
 
 export default function page() {
@@ -14,7 +15,9 @@ export default function page() {
   const [budgets, setBudgets] = useState();
   const [transactions, setTransactions] = useState();
   const [chartData, setChartData] = useState([]);
-  const [summary, setSummary] = useState()
+  const [summary, setSummary] = useState();
+  const [loadBugets, setLoadBudgets] = useState(false);
+  const [data, setData] = useState();
 
   async function submit(e) {
     e.preventDefault();
@@ -38,6 +41,7 @@ export default function page() {
         setTheme("green");
         setSpend("");
         setCategory("entertainment");
+        setLoadBudgets(true);
       }
     } catch (error) {
       console.log(error);
@@ -52,21 +56,35 @@ export default function page() {
           const res = await req.json();
           setBudgets(res.budgets);
           setTransactions(res.transaction);
-          const d = [res.transaction.map(el => [el.transactionCategory,el.transactionAmount])]
+          const d = [
+            res.transaction.map((el) => [
+              el.transactionCategory,
+              el.transactionAmount,
+              el.transactionName,
+              el.transactionDate,
+            ]),
+          ];
           const data = {
-            budget: res.budgets.map((el,index) => [el.category, el.theme, el.spend]),
-            spending: d
+            budget: res.budgets.map((el, index) => [
+              el.category,
+              el.theme,
+              el.spend,
+            ]),
+            spending: d,
           };
-          const m = aggregateTable(data)
+          const m = aggregateTable(data);
+          const j = budgetInfo(data)
           setChartData(data);
-          setSummary(m)
+          setSummary(m);
+          setLoadBudgets(false);
+          setData(j);
         }
       } catch (error) {
         console.log(error);
       }
     }
     getData();
-  }, []);
+  }, [loadBugets]);
 
   return (
     <div className="h-screen overflow-y-scroll p-5">
@@ -79,8 +97,8 @@ export default function page() {
           Add New Budget
         </button>
       </div>
-      <div className="block sm:flex sm:justify-between mt-10">
-        <div className="h-fit py-10 px-5 bg-white sm:w-2/5 grid grid-col-1">
+      <div className="block sm:flex mt-10">
+        <div className="h-fit py-10 px-5 bg-white grid grid-col-1 sm:w-2/4 sm:mr-5">
           <div className="flex justify-center w-full">
             <Piechart data={chartData} />
           </div>
@@ -89,7 +107,9 @@ export default function page() {
             <Summary data={summary} />
           </div>
         </div>
-        <div></div>
+        <div className="sm:w-2/4">
+          {data ? <BudgetsContainer data={data} /> : <></>}
+        </div>
       </div>
       {openModal ? (
         <ModalBudget

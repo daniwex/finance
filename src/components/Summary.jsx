@@ -6,7 +6,7 @@ export default function Summary({ data }) {
     <div className="my-2">
       {data ? (
         Object.keys(data).map((el, index) => (
-          <div className={`sm:flex sm:justify-between py-2 my-3 text-sm ${index != data.length - 2 ? 'border-b' : ''}`}>
+          <div key={index} className={`sm:flex sm:justify-between py-2 my-3 text-sm ${index != data.length - 2 ? 'border-b' : ''}`}>
             <div className="relative">
               <span style={{backgroundColor: data[el][0]}} className={`absolute left-0 h-full w-1`}></span>
               <span className="ml-3">{el[0].toUpperCase() + el.slice(1)}</span>

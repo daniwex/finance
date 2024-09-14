@@ -24,7 +24,7 @@ export default function ModalTransaction({
           </button>
         </div>
         <div className="text-LabelColor mt-5">
-          <p className="text-xs leading-5">
+          <p className="text-xs leading-5 text-black">
             Record a transaction, you can fill in the details below{" "}
           </p>
         </div>

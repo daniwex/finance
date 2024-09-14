@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
     const pathname = usePathname()
   return (
-    <nav className="bg-grey_500 text-white sm:fixed sm:h-screen sm:w-[15%] rounded-t-lg sm:rounded-tl-none sm:rounded-r-lg absolute bottom-0 w-full">
+    <nav className="bg-grey_500 text-white fixed sm:h-screen sm:w-[15%] rounded-t-lg sm:rounded-tl-none sm:rounded-r-lg bottom-0 w-full z-10 h-fit">
       <h3 className="hidden sm:block sm:px-5 sm:pb-10 sm:pt-5">finance</h3>
       <ul className="grid sm:grid-cols-1 sm:gap-1 text-sm text-LabelColor sm:w-5/6 grid-cols-5 px-5 sm:px-0 align-center pt-2 sm:pt-0">
         <Link 

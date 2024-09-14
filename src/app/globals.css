@@ -21,10 +21,11 @@
 body {
     padding: 0;
     margin: 0;
+    position: relative;
 }
 html, body{
   box-sizing: border-box;
-  height: 100%;
+  min-height: 100%;
 }
 @layer utilities {
   .text-balance {
